@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/auth")
 public class AuthController {
 
+    @GetMapping("/test")
+    public ResponseEntity<String> test() {
+        return ResponseEntity.ok("Auth controller is working!");
+    }
+
     @Autowired
     private AuthService authService;
 
@@ -28,12 +33,17 @@ public class AuthController {
     public ResponseEntity<?> register(
             @RequestParam String userName,
             @RequestParam String password,
-            @RequestParam Localizacao localizacao,
+            @RequestParam String localizacao,
             @RequestParam(required = false) String estado,
             @RequestParam(required = false) String cidade,
             @RequestParam(required = false) String bairro
     ) {
-        authService.register(userName, password, localizacao, estado, cidade, bairro);
-        return ResponseEntity.ok("Admin registered successfully");
+        try {
+            Localizacao loc = Localizacao.valueOf(localizacao.toUpperCase());
+            authService.register(userName, password, loc, estado, cidade, bairro);
+            return ResponseEntity.ok("User registered successfully");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Registration failed: " + e.getMessage());
+        }
     }
 }
