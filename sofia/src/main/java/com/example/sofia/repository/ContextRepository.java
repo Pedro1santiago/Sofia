@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface ContextRepository extends JpaRepository<Context, Long> {
 
-    @Query("SELECT d FROM Discussion d WHERE LOWER(d.title) LIKE LOWER(CONCAT('%', :text, '%')) " +
+    @Query("SELECT d FROM Context d WHERE LOWER(d.title) LIKE LOWER(CONCAT('%', :text, '%')) " +
             "OR LOWER(d.description) LIKE LOWER(CONCAT('%', :text, '%'))")
     List<Context> searchByText(@Param("text") String text);
 }
