@@ -26,8 +26,9 @@ public class OpinionService {
 
         Opinion opinion = new Opinion();
         opinion.setUser(user);
-        opinion.setOpinionText(dto.text());
+        opinion.setOpinionText(dto.opinionText());
         opinion.setCreatedAt(LocalDateTime.now());
+        opinion.setRelevancia(dto.relevancia() != null ? dto.relevancia() : 0);
 
         return opinionRepository.save(opinion);
     }
@@ -39,4 +40,15 @@ public class OpinionService {
     public List<Opinion> getByUser(Long userId) {
         return opinionRepository.findByUserId(userId);
     }
+
+    public List<Opinion> getByFilters(String estado, String cidade, String bairro, Integer minRelevancia, Long contextId) {
+        return opinionRepository.findByFilters(
+                estado,
+                cidade,
+                bairro,
+                minRelevancia != null ? minRelevancia : 0,
+                contextId
+        );
+    }
+
 }

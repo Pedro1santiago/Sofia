@@ -14,16 +14,22 @@ public class User {
     private String passwordHash;
 
     @Enumerated(EnumType.STRING)
-    private Role role = Role.USER;
+    private Localizacao localizacao;
+
+    private String estado;
+    private String cidade;
+    private String bairro;
 
     public User() {}
 
-    public User(String userName, String passwordHash, Role role) {
+    public User(String userName, String passwordHash, Localizacao localizacao, String estado, String cidade, String bairro) {
         this.userName = userName;
         this.passwordHash = passwordHash;
-        this.role = role;
+        this.localizacao = localizacao;
+        this.estado = estado;
+        this.cidade = cidade;
+        this.bairro = bairro;
     }
-
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -34,6 +40,15 @@ public class User {
     public String getPasswordHash() { return passwordHash; }
     public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
 
-    public Role getRole() { return role; }
-    public void setRole(Role role) { this.role = role; }
+    public Localizacao getLocalizacao() { return localizacao; }
+    public void setLocalizacao(Localizacao localizacao) { this.localizacao = localizacao; }
+
+    public String getEstado() { return estado; }
+    public void setEstado(String estado) { this.estado = estado; }
+
+    public String getCidade() { return cidade; }
+    public void setCidade(String cidade) { this.cidade = cidade; }
+
+    public String getBairro() { return bairro; }
+    public void setBairro(String bairro) { this.bairro = bairro; }
 }

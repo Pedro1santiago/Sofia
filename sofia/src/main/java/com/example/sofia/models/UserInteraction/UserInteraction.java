@@ -1,5 +1,6 @@
 package com.example.sofia.models.UserInteraction;
 
+import com.example.sofia.models.Users.Localizacao;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
@@ -15,6 +16,13 @@ public class UserInteraction {
     private String whatsappNumber;
     private Integer age;
     private LocalDateTime interactionDate;
+
+    @Enumerated(EnumType.STRING)
+    private Localizacao localizacao;
+
+    private String estado;
+    private String cidade;
+    private String bairro;
 
     public String getName() {
         return name;
@@ -40,7 +48,7 @@ public class UserInteraction {
         this.whatsappNumber = whatsappNumber;
     }
 
-    public Integer getAge(Integer age) {
+    public Integer getAge() {
         return this.age;
     }
 
@@ -54,5 +62,37 @@ public class UserInteraction {
 
     public void setInteractionDate(LocalDateTime interactionDate) {
         this.interactionDate = interactionDate;
+    }
+
+    public Localizacao getLocalizacao() {
+        return localizacao;
+    }
+
+    public void setLocalizacao(Localizacao localizacao) {
+        this.localizacao = localizacao;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
     }
 }

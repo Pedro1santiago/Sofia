@@ -1,4 +1,13 @@
 package com.example.sofia.models.Opinion;
 
-public record OpinionRequestDTO(Long userId, String text) {
-}
+import com.example.sofia.models.Users.Localizacao;
+
+public record OpinionRequestDTO(
+        Long userId,
+        String opinionText,
+        Localizacao localizacao,
+        String estado,
+        String cidade,
+        String bairro,
+        Integer relevancia
+) {}

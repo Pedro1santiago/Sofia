@@ -1,7 +1,7 @@
 package com.example.sofia.controller;
 
+import com.example.sofia.models.Users.Localizacao;
 import com.example.sofia.models.Users.LoginRequest;
-import com.example.sofia.models.Users.Role;
 import com.example.sofia.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,14 +28,12 @@ public class AuthController {
     public ResponseEntity<?> register(
             @RequestParam String userName,
             @RequestParam String password,
-            @RequestParam(defaultValue = "USER") String role
+            @RequestParam Localizacao localizacao,
+            @RequestParam(required = false) String estado,
+            @RequestParam(required = false) String cidade,
+            @RequestParam(required = false) String bairro
     ) {
-        try {
-            Role userRole = Role.valueOf(role.toUpperCase());
-            authService.register(userName, password, userRole);
-            return ResponseEntity.ok("User registered successfully");
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body("Invalid role. Use USER or ADMIN");
-        }
+        authService.register(userName, password, localizacao, estado, cidade, bairro);
+        return ResponseEntity.ok("Admin registered successfully");
     }
 }

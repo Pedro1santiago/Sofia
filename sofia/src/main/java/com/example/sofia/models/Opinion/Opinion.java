@@ -1,6 +1,7 @@
 package com.example.sofia.models.Opinion;
 
 import com.example.sofia.models.UserInteraction.UserInteraction;
+import com.example.sofia.models.context.Context;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -17,8 +18,14 @@ public class Opinion {
     @JoinColumn(name = "user_id")
     private UserInteraction user;
 
+    @ManyToOne
+    @JoinColumn(name = "context_id")
+    private Context context;
+
     private String opinionText;
     private LocalDateTime createdAt;
+
+    private Integer relevancia;
 
     public Long getId() {
         return id;
@@ -28,28 +35,43 @@ public class Opinion {
         this.id = id;
     }
 
-    public UserInteraction getUser(){
+    public UserInteraction getUser() {
         return user;
     }
 
-    public void setUser(UserInteraction user){
+    public void setUser(UserInteraction user) {
         this.user = user;
     }
 
-    public String getOpinionText(){
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+    public String getOpinionText() {
         return opinionText;
     }
 
-    public void setOpinionText(String opinionText){
+    public void setOpinionText(String opinionText) {
         this.opinionText = opinionText;
     }
 
-    public LocalDateTime getCreatedAt(){
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt){
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
+    public Integer getRelevancia() {
+        return relevancia;
+    }
+
+    public void setRelevancia(Integer relevancia) {
+        this.relevancia = relevancia;
+    }
 }

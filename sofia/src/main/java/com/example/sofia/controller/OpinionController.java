@@ -21,7 +21,16 @@ public class OpinionController {
     }
 
     @GetMapping
-    public List<Opinion> getAll(){
+    public List<Opinion> getAll(
+            @RequestParam(required = false) String estado,
+            @RequestParam(required = false) String cidade,
+            @RequestParam(required = false) String bairro,
+            @RequestParam(required = false) Integer minRelevancia,
+            @RequestParam(required = false) Long contextId
+    ){
+        if(estado != null || cidade != null || bairro != null || minRelevancia != null || contextId != null){
+            return opinionService.getByFilters(estado, cidade, bairro, minRelevancia, contextId);
+        }
         return opinionService.getAll();
     }
 
