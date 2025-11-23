@@ -1,6 +1,7 @@
 package com.example.sofia.models.Opinion;
 
 import com.example.sofia.models.UserInteraction.UserInteraction;
+import com.example.sofia.models.Users.Localizacao;
 import com.example.sofia.models.context.Context;
 import jakarta.persistence.*;
 
@@ -27,51 +28,40 @@ public class Opinion {
 
     private Integer relevancia;
 
-    public Long getId() {
-        return id;
-    }
+    @Enumerated(EnumType.STRING)
+    private Localizacao localizacao;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private String estado;
+    private String cidade;
+    private String bairro;
 
-    public UserInteraction getUser() {
-        return user;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setUser(UserInteraction user) {
-        this.user = user;
-    }
+    public UserInteraction getUser() { return user; }
+    public void setUser(UserInteraction user) { this.user = user; }
 
-    public Context getContext() {
-        return context;
-    }
+    public Context getContext() { return context; }
+    public void setContext(Context context) { this.context = context; }
 
-    public void setContext(Context context) {
-        this.context = context;
-    }
+    public String getOpinionText() { return opinionText; }
+    public void setOpinionText(String opinionText) { this.opinionText = opinionText; }
 
-    public String getOpinionText() {
-        return opinionText;
-    }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 
-    public void setOpinionText(String opinionText) {
-        this.opinionText = opinionText;
-    }
+    public Integer getRelevancia() { return relevancia; }
+    public void setRelevancia(Integer relevancia) { this.relevancia = relevancia; }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
+    public Localizacao getLocalizacao() { return localizacao; }
+    public void setLocalizacao(Localizacao localizacao) { this.localizacao = localizacao; }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
+    public String getEstado() { return estado; }
+    public void setEstado(String estado) { this.estado = estado; }
 
-    public Integer getRelevancia() {
-        return relevancia;
-    }
+    public String getCidade() { return cidade; }
+    public void setCidade(String cidade) { this.cidade = cidade; }
 
-    public void setRelevancia(Integer relevancia) {
-        this.relevancia = relevancia;
-    }
+    public String getBairro() { return bairro; }
+    public void setBairro(String bairro) { this.bairro = bairro; }
 }

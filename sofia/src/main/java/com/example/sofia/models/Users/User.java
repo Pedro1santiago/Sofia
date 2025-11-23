@@ -22,6 +22,16 @@ public class User {
 
     public User() {}
 
+    public User(String userName, String passwordHash) {
+        this.userName = userName;
+        this.passwordHash = passwordHash;
+
+        this.localizacao = null;
+        this.estado = null;
+        this.cidade = null;
+        this.bairro = null;
+    }
+
     public User(String userName, String passwordHash, Localizacao localizacao, String estado, String cidade, String bairro) {
         this.userName = userName;
         this.passwordHash = passwordHash;

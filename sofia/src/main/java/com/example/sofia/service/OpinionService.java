@@ -21,6 +21,7 @@ public class OpinionService {
     private UserInteractionRepository userInteractionRepository;
 
     public Opinion createOpinion(OpinionRequestDTO dto) {
+
         UserInteraction user = userInteractionRepository.findById(dto.userId())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -29,6 +30,11 @@ public class OpinionService {
         opinion.setOpinionText(dto.opinionText());
         opinion.setCreatedAt(LocalDateTime.now());
         opinion.setRelevancia(dto.relevancia() != null ? dto.relevancia() : 0);
+
+        opinion.setLocalizacao(dto.localizacao());
+        opinion.setEstado(dto.estado());
+        opinion.setCidade(dto.cidade());
+        opinion.setBairro(dto.bairro());
 
         return opinionRepository.save(opinion);
     }
@@ -50,5 +56,5 @@ public class OpinionService {
                 contextId
         );
     }
-
 }
+

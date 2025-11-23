@@ -11,3 +11,4 @@ public record OpinionRequestDTO(
         String bairro,
         Integer relevancia
 ) {}
+
